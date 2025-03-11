@@ -1,6 +1,20 @@
 import pandas as pd
 from typing import Union
 
+def clean_numeric(x):
+    """Helper function to clean numeric values"""
+    if pd.isna(x):
+        return np.nan
+    if isinstance(x, str):
+        x = x.replace(',', '').replace(' ', '')
+        if x in ['*', '**', '-', 'S', 'N']:
+            return np.nan
+    try:
+        return int(float(x))  # Convert to float first, then to int
+    except:
+        return np.nan
+
+
 def calc_hhi(df: pd.DataFrame,
              naics_code: Union[int, str],
              naics_var: str,
