@@ -1,5 +1,6 @@
 import pandas as pd
 from typing import Union
+import numpy as np
 
 def clean_numeric(x):
     """Helper function to clean numeric values"""
